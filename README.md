@@ -1,4 +1,4 @@
-# vue-cli-1
+# Artificium-vue
 
 ## Project setup
 ```
