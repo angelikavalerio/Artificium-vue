@@ -1,5 +1,5 @@
 <template>
-  <router-view></router-view>
+    <router-view></router-view>
 </template>
 
 <script>
@@ -13,7 +13,9 @@ export default {
 body {
   margin: 0 !important;
   padding: 0;
+  background-color: var(--background);
 }
+
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -21,6 +23,5 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: var(--black);
 }
 </style>

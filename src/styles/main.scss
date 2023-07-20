@@ -1,0 +1,72 @@
+/*VARIABLES*/
+* {
+    --main-green: #B6F09C;
+    --main-blue: #82DBF7;
+    --background: #131619;
+    --surface: #0D0F10;
+    
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* FONTS */
+@font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("../assets/fonts/PlusJakartaSans-Regular.ttf");
+}
+
+* {
+    font-family: "Plus Jakarta Sans";
+    color: #9B9C9E;
+}
+
+
+
+/* CUSTOMIZED FROM BROWSER */
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #1A1D21;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Element Plus Customized */
+
+:root {
+    --el-color-primary: var(--main-green);
+}
+
+.el-input__wrapper {
+    background-color: #1A1D21;
+    box-shadow: 0 0 0 1px #9b9c9eb4;
+}
+
+.el-input__wrapper.is-focus {
+    box-shadow: 0 0 2px 4px #4b565f;
+    border: 2px solid var(--main-green);
+}
+
+.el-checkbox__input.is-checked+.el-checkbox__label {
+    color: #9B9C9E;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: var(--main-green);
+    border-color: #4b565f;
+}
+
+/* UTILITIES */
+
+.full-height {
+    height: 100vh;
+}

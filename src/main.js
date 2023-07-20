@@ -3,6 +3,7 @@ import App from './App.vue'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import './styles/style.css'
+import './styles/main.scss'
 import ButtonSubmit from './components/ButtonSubmit.vue'
 import router from './router'
 
