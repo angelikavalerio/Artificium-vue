@@ -56,22 +56,18 @@ const router = useRouter()
 const activeClass = ref('active')
 const path = router.currentRoute._value.path
 const pathStripped = ref(path.replace('/dashboard/', ''))
-console.log(pathStripped)
 
 
 onMounted(() => {
     watchEffect(() => {
         if (pathStripped.value === 'artificium') {
             document.querySelector('.underline').style.left = "1.5rem"
-            console.log('dasd')
         }   
         if (pathStripped.value === 'chat') {
             document.querySelector('.underline').style.left = "123px"
-            console.log('dasd11')
         }   
         if (pathStripped.value === 'library') {
             document.querySelector('.underline').style.left = "215px"
-            console.log('dasd22')
         }  
         })
     }
