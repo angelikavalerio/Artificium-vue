@@ -1,5 +1,35 @@
-<template>
+<!-- eslint-disable vue/valid-v-model -->
+<!-- eslint-disable vue/valid-v-model -->
+<!-- eslint-disable vue/valid-v-model -->
+<!-- eslint-disable vue/valid-v-model -->
 
+<script setup>
+import { reactive, vModelText, ref } from "vue";
+
+
+const form = reactive({
+  fname: null,
+  lname: null,
+  password: null
+})
+
+const checked = ref(false)
+
+vModelText.beforeUpdate = (el) => {
+
+  let arr = el.value.split(' ')
+  let arr2 = []
+  arr.forEach(element => {
+    arr2.push(element.charAt(0).toUpperCase() + element.slice(1))
+  });
+  el.value = arr2.join(' ')
+
+}
+
+</script>
+
+
+<template>
   <div class="form">
     <h3 class="register__heading">Connect with your team and bring your creative ideas to life.</h3>
     <form class="form__container">
@@ -7,7 +37,7 @@
         <div class="left">
           <el-form-item>
             <span class="label">First Name</span>
-            <el-input class="input" v-model="form.fname" />
+            <el-input class="input" type="text" v-model="form.fname" />
           </el-form-item>
           <el-form-item>
             <span class="label">Last Name</span>
@@ -30,23 +60,13 @@
         <span class="terms">Terms and conditions</span>
       </el-form-item>
       <el-form-item>
-        <router-link to="/dashboard" class="button">Create free account</router-link>
+        <router-link to="/dashboard/artificium" class="button">Create free account</router-link>
       </el-form-item>
     </form>
   </div> 
 </template>
 
-<script setup>
-import { reactive } from "vue";
 
-
-const form = reactive({
-  fname: null,
-  lname: null,
-  password: null
-})
-
-</script>
 
 
 <style lang="scss" scoped>
@@ -95,8 +115,8 @@ const form = reactive({
     background-clip: text;
     color: transparent;
 
-      &__container {
-        margin-bottom: 3rem;
+    &__container {
+      margin-bottom: 3rem;
     }
   }
 

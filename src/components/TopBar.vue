@@ -21,15 +21,24 @@
             </div>
         </div>
         <div class="topbar__tab">
-            <div class="topbar__tab--item topbar__tab--item-1" @click="moveUnderline('artificium')">
-                <Share class="topbar__tab--item--icon" style="width: 1.rem; height: 1rem"/> 
+            <div 
+                class="topbar__tab--item topbar__tab--item-1" 
+                @click="selectTab('artificium')" 
+                :class="pathStripped === 'artificium' ? activeClass : ''">
+                <font-awesome-icon class="topbar__tab--item--icon" :icon="`fa-solid fa-mountain-sun`" />
                 <span class="topbar__tab--item--title">Artificium</span>
             </div>
-            <div class="topbar__tab--item topbar__tab--item-2" @click="moveUnderline('chat')">
+            <div 
+                class="topbar__tab--item topbar__tab--item-2" 
+                @click="selectTab('chat')" 
+                :class="pathStripped === 'chat' ? activeClass : ''">
                 <ChatRound class="topbar__tab--item--icon" style="width: 1rem; height: 1rem"/> 
                 <span class="topbar__tab--item--title">Chat</span>
             </div>
-            <div class="topbar__tab--item topbar__tab--item-3" @click="moveUnderline('library')">
+            <div 
+                class="topbar__tab--item topbar__tab--item-3" 
+                @click="selectTab('library')" 
+                :class="pathStripped === 'library' ? activeClass : ''">
                 <Files class="topbar__tab--item--icon" style="width: 1rem; height: 1rem"/> 
                 <span class="topbar__tab--item--title">Library</span>
             </div>
@@ -39,10 +48,34 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { Share, ChatRound, Files } from '@element-plus/icons-vue'
 
+const router = useRouter()
+const activeClass = ref('active')
+const path = router.currentRoute._value.path
+const pathStripped = ref(path.replace('/dashboard/', ''))
+console.log(pathStripped)
+
+
+onMounted(() => {
+    watchEffect(() => {
+        if (pathStripped.value === 'artificium') {
+            document.querySelector('.underline').style.left = "1.5rem"
+            console.log('dasd')
+        }   
+        if (pathStripped.value === 'chat') {
+            document.querySelector('.underline').style.left = "123px"
+            console.log('dasd11')
+        }   
+        if (pathStripped.value === 'library') {
+            document.querySelector('.underline').style.left = "215px"
+            console.log('dasd22')
+        }  
+        })
+    }
+)
 
 const users = ref([
     {
@@ -52,12 +85,12 @@ const users = ref([
     },
     {
         name: "Val2",
-        avatar: "dp.png",
-        status: 1
+        avatar: "dp3.png",
+        status: 0
     },
     {
         name: "Val3",
-        avatar: "dp.png",
+        avatar: "dp3.png",
         status: 0
     },
     {
@@ -82,30 +115,18 @@ const users = ref([
     },
 ])
 
-const router = useRouter()
 
-
-const moveUnderline = (pos) => {
-    if (pos ===  'artificium') {
-        document.querySelector('.underline').style.left = "1.5rem"
-    }   
-    if (pos === 'chat') {
-        document.querySelector('.underline').style.left = "120px"
-        
-    }   
-    if (pos === 'library') {
-        document.querySelector('.underline').style.left = "210px"
-        
-    }  
+const selectTab = (pos) => {
+    pathStripped.value = pos
     router.push({
-            path: `/dashboard/${pos}`
+            path: `/dashboard/${pathStripped.value}`
         })
 }
 
 const usersCount = computed(() => {
-    console.log(users.value.length > 3 )
     return users.value.length > 3 
 })
+
 
 
 
@@ -117,11 +138,15 @@ const usersCount = computed(() => {
     line-height: 1.125rem;
     letter-spacing: 0.00938rem;
 }
+
+.active >  .topbar__tab--item--icon > path {
+    fill: var(--main-green);
+}
 .topbar {
    
-    background-color: var(--surface);
-    margin: 1rem;
-    border-radius: 1.25rem;
+    background-color: var(--background);
+    padding: 1rem;
+    // border-radius: 1.25rem;
     display: block;
     margin-left: auto;
     width: calc(100% - 22rem);
@@ -135,6 +160,9 @@ const usersCount = computed(() => {
         padding: 1.5rem;
         position: relative;
         z-index: 1;
+        background-color: var(--surface);
+        border-top-right-radius: 1.25rem;
+        border-top-left-radius: 1.25rem;
 
         &--left {
             display: flex;
@@ -237,6 +265,9 @@ const usersCount = computed(() => {
         padding: 0 1.5rem;
         display: flex;
         position: relative;
+        background-color: var(--surface);
+        border-bottom-right-radius: 1.25rem;
+        border-bottom-left-radius: 1.25rem;
         &--item {
             display: flex;
             padding: 2rem 0;

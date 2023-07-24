@@ -7,7 +7,6 @@
                 <ul class="art__tab--col" v-for="choice in choices" :key="choice.name">
                     <li class="circle" :style="`box-shadow: 0px 0px 64px 0px ${choice.color}`">
                         <img class="art__tab--col-img" :src="require(`../assets/${choice.icon}`)" alt="icon">
-                        <div ></div>
                         <div class="shadoww"></div>
                     </li>
                     <li class="art__tab--col-item" v-for="child in choice.children" :key="child" >
@@ -52,7 +51,7 @@ const choices = ref([
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 ul {
     margin-block-start: 0 !important;
@@ -60,13 +59,16 @@ ul {
     padding-inline-start: 0 !important;
 }
 
+.underline {
+    left: 1.5rem;
+}
+
 .art {
     display: flex;
     flex-direction: column;
     margin-left: auto;
     width: calc(100% - 20rem);
-    overflow-y: scroll;
-    padding-top: 310px;
+    margin-top: 300px;
 
     &__heading {
         font-size: 1.75rem;
@@ -86,18 +88,17 @@ ul {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin: 0 auto;
+        margin: 0 10rem;
         margin-top: 4rem;
-        max-width: calc(100% - 15rem);
-        gap: 4rem;
-        flex-wrap: wrap;
+        gap: 54px;
+        flex-wrap: wrap;        
 
         &--col {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: .5rem;
-            width: 12.5rem;
+            gap: 8px;
+            width: 15.5rem;
 
             &-item {
                 border-top: 2px solid var(--glass-stroke, rgba(255, 255, 255, 0.08));
@@ -123,6 +124,7 @@ ul {
                 border-radius: 50%;
                 margin: 0 auto;
                 margin-bottom: 1rem;
+                z-index: -1;
             }
 
             &-img {

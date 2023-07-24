@@ -6,9 +6,11 @@
         <side-bar></side-bar>
         <top-bar ></top-bar>
         <div class="shadow"></div>
-        <transition>
-            <router-view></router-view>
-        </transition>
+        <router-view v-slot="{ Component }">
+            <transition>
+                <component :is="Component" />
+            </transition>
+        </router-view>
     </div>
 </template>
 <script setup>
@@ -20,8 +22,7 @@ import TopBar from '../../components/TopBar.vue'
 .v-enter-from { opacity: 0 }
 .v-enter-to   { opacity: 1 }
 
-.v-enter-active,
-.v-leave-active {
+.v-enter-active {
   transition: opacity .5s ease
 }
 .v-leave-from { opacity: 1 }
@@ -29,7 +30,6 @@ import TopBar from '../../components/TopBar.vue'
 
 .container {
     padding: 1rem;
-
     .shadow {
         background: linear-gradient(360deg, rgba(19, 22, 25, 0.00) 0, #131619 100%);
         width: calc(100% - 22rem);
@@ -39,7 +39,6 @@ import TopBar from '../../components/TopBar.vue'
         margin-right: 1rem;
         margin-top: 185px;
         position: fixed;
-        
     }
 
 }

@@ -12,12 +12,13 @@
                     <span class="sidebar__header--grid-item-3--text">12 members</span>
                 </div>
             </div>
-            <img src="../assets/chevron-down.svg" alt="chevron down">
+            <!-- <img src="../assets/chevron-down.svg" alt="chevron down"> -->
+            <font-awesome-icon :icon="`fa-solid fa-chevron-down`" />
         </div>
         <div class="sidebar__general">
             <span class="sidebar--heading">General</span>
             <div class="sidebar__general--list" v-for="item in general" :key="item.name">
-                <img class="sidebar__general--list-icon" :src="require(`../assets/${item.logo}`)">
+                <font-awesome-icon class="sidebar__general--list-icon" :icon="`fa-solid ${item.logo}`" />
                 <span class="sidebar__general--list-title"> {{ item.name }} </span>
             </div>
         </div>
@@ -57,11 +58,11 @@ import { Setting, CirclePlus } from '@element-plus/icons-vue'
 const general = ref([
     {
         name: "Search",
-        logo: "chevron-down.svg"
+        logo: "fa-search"
     },
     {
         name: "Billing",
-        logo: "chevron-down.svg"
+        logo: "fa-wallet"
     }
 
 ])
@@ -140,7 +141,6 @@ const projects = ref([
                     letter-spacing: 0.00938rem;
                     color: #fff;
                 }
-                
             }
 
             &-item-3 {

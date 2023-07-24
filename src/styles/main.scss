@@ -39,11 +39,19 @@ html {
     width: 8px;
 }
 
+::selection {
+    background: #4b565f;
+}
+
 
 /* Element Plus Customized */
 
 :root {
     --el-color-primary: var(--main-green);
+}
+
+#app::selection {
+    background-color: #4b565f;
 }
 
 .el-input__wrapper {
