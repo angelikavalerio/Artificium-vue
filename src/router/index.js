@@ -3,17 +3,18 @@ import Dashboard from '../layout/dashboard'
 import HelloWorld from '../components/HelloWorld.vue'
 import Artificium from '../views/dashboard-artificium.vue'
 import Chat from '../views/dashboard-chat.vue'
+import Library from '../views/dashboard-library.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 
 const routes = [
-    { path: '/', component: HelloWorld },
-    { path: '/register', component: Register },
+    { path: '/', component: Register },
     { path: '/dashboard',
         component: Dashboard,
       children: [{
         path: 'artificium',
-        component: Artificium
+        component: Artificium,
+        name: Artificium
       },
       {
         path: 'chat',
@@ -21,7 +22,7 @@ const routes = [
       },
       {
         path: 'library',
-        component: Chat
+        component: Library
       }
     ]
 

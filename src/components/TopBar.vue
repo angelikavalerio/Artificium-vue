@@ -48,15 +48,15 @@
 </template>
 
 <script setup>
-import { ref, computed, watchEffect, onMounted } from 'vue'
+import { ref, computed, watchEffect, onMounted, defineExpose } from 'vue'
 import { useRouter } from 'vue-router'
 import { Share, ChatRound, Files } from '@element-plus/icons-vue'
 
 const router = useRouter()
 const activeClass = ref('active')
-const path = router.currentRoute._value.path
-const pathStripped = ref(path.replace('/dashboard/', ''))
 
+const path = ref(router.currentRoute._value.path)
+const pathStripped = ref(path.value.replace('/dashboard/', ''))
 
 onMounted(() => {
     watchEffect(() => {
@@ -87,12 +87,12 @@ const users = ref([
     {
         name: "Val3",
         avatar: "dp3.png",
-        status: 0
+        status: 1
     },
     {
         name: "Val4",
         avatar: "dp.png",
-        status: 1
+        status: 0
     },
     {
         name: "Val5",
@@ -112,6 +112,7 @@ const users = ref([
 ])
 
 
+
 const selectTab = (pos) => {
     pathStripped.value = pos
     router.push({
@@ -124,7 +125,9 @@ const usersCount = computed(() => {
 })
 
 
-
+defineExpose({
+  selectTab
+})
 
 </script>
 
@@ -141,14 +144,18 @@ const usersCount = computed(() => {
 .topbar {
    
     background-color: var(--background);
-    padding: 1rem;
+    // padding: 1rem;
+    // padding-left: 0;
     // border-radius: 1.25rem;
-    display: block;
-    margin-left: auto;
+    // display: block;
+    // margin-left: auto;
     width: calc(100% - 22rem);
+    // // position: absolute;
+    // right: 0;
+    // top: 0;
+    // z-index: 2;
+    // width: 100%;
     position: fixed;
-    right: 0;
-    top: 0;
 
     &__head {
         display: flex;
