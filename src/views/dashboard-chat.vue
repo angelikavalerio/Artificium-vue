@@ -5,6 +5,7 @@
 
 <script setup>
 import ChatBar from '../components/ChatBar.vue'
+
 </script>
 
 <style lang="scss">

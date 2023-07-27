@@ -1,5 +1,8 @@
 <template>
-    <button :class="`mic`">Record</button>
+    <div class="main">
+<button :class="`mic`">Record</button>
+    </div>
+    
 </template>
 
 <script setup>
@@ -37,6 +40,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .mic {
+    width: 100px;
     position: absolute;
     top: 50%;
     left: 50%;

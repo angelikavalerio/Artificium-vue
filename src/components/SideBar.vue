@@ -12,7 +12,6 @@
                     <span class="sidebar__header--grid-item-3--text">12 members</span>
                 </div>
             </div>
-            <!-- <img src="../assets/chevron-down.svg" alt="chevron down"> -->
             <font-awesome-icon :icon="`fa-solid fa-chevron-down`" />
         </div>
         <div class="sidebar__general">
@@ -29,7 +28,6 @@
                 <span class="sidebar__general--list-title"> {{ item.name }} </span>
             </div>
             <div class="sidebar__add">
-                <!-- <img class="sidebar__general--list-icon" :src="require(`"../assets/chevron-down.svg`)"> -->
                 <CirclePlus style="width:1rem; height:1rem; margin-right:1rem;"/>
                 <span class="sidebar__general--list-title add"> Add new project </span>
             </div>
@@ -47,7 +45,6 @@
                 </div>
             </div>
             <Setting width="1.5rem" height="1.5rem" />
-            <!-- <img src="../assets/chevron-down.svg" alt="chevron down"> -->
         </div>
     </div>
 </template>
@@ -64,7 +61,6 @@ const general = ref([
         name: "Billing",
         logo: "fa-wallet"
     }
-
 ])
 
 const projects = ref([
@@ -84,10 +80,7 @@ const projects = ref([
         name: "Social Media Strategy",
         logo: "octagon.svg"
     }
-
 ])
-
-
 </script>
 
 <style lang="scss">
@@ -112,8 +105,6 @@ const projects = ref([
     border-radius: 1.25rem;
     text-align: left;
     min-height: calc(100vh - 2rem);
-    position: fixed;
-    
 
     &__header {
         @include flex-item;
@@ -224,7 +215,5 @@ const projects = ref([
         border-top: 2px solid var(--glass-stroke, rgba(255, 255, 255, 0.08));
         background: linear-gradient(145deg, rgba(215, 237, 237, 0.16) 0%, rgba(204, 235, 235, 0.00) 100%);
     }
-
 }
-
 </style>

@@ -4,12 +4,12 @@
 <template>
     <div class="container">
         <div class="container__left">
-            <side-bar class="side-bar"></side-bar>
+            <side-bar class="sidebar"></side-bar>
             
         </div>
         <div class="container__right">
-            <top-bar ref="topBarRef" class="top-bar"></top-bar>
-            <div class="shadow"></div>
+            <top-bar ref="topBarRef" class="topbar"></top-bar>
+            <!-- <div class="shadow"></div> -->
             <router-view v-slot="{ Component }">
                 <transition>
                     <component :is="Component" class="main"/>
@@ -32,20 +32,20 @@ const route = useRoute()
 watch(route, (to, from) => {
     const path = to.path.replace('/dashboard/', '')
     if (path === 'artificium') {
-        document.querySelector('.underline').style.left = "1.5rem"     
+        document.querySelector('.underline').style.left = "2rem"     
     }   
     if (path === 'chat') {
-        document.querySelector('.underline').style.left = "123px"
+        document.querySelector('.underline').style.left = "130px"
     }   
     if (path === 'library') {
-        document.querySelector('.underline').style.left = "215px"
+        document.querySelector('.underline').style.left = "220px"
     }  
     topBarRef.value.selectTab(path)
 })
 
 
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 
 .v-enter-from { opacity: 0 }
 .v-enter-to   { opacity: 1 }
@@ -57,36 +57,30 @@ watch(route, (to, from) => {
 .v-leave-to   { opacity: 0 }
 
 .container {
-    padding: 1rem;
+    padding: 0 1rem 1rem  1rem;
     position: relative;
     display: flex;
 
-    // .main {
-    //     margin-left: auto;
-    //     width: calc(100% - 20rem);
-        
-    // }
     &__left {
         margin-right: 1rem;
+        width: 19.5rem;
+
+        .sidebar {
+            position: fixed;
+            margin-top: 1rem;
+        }    
     }
    
     &__right {
-        width: 100%;
-        // height: 70vh;
+        width: calc(100vw  - 19.5rem);
         
-        // overflow: scroll;
-    }
-   
-    .shadow {
-        background: linear-gradient(360deg, rgba(19, 22, 25, 0.00) 0, #131619 100%);
-        width: calc(100% - 22rem);
-        height: 80px;
-        display: block;
-        right: 0;
-        margin-right: 1rem;
-        // margin-top: 185px;
-        // position: absolute;
-        z-index: 1;
+        .topbar {
+            width: 100%;
+            position: fixed;
+            width: calc(100vw  - 22rem);
+            padding-top: 1rem;
+            box-shadow: 1px 52px 15px rgba(19, 22, 25, 0.644);
+        }
     }
 
 }

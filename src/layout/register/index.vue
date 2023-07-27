@@ -36,6 +36,7 @@ const show = ref(true)
 
 .container {
     background-color: var(--background);
+    padding: 0;
 
     .main {
         background-color: var(--black);

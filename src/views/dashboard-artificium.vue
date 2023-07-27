@@ -18,8 +18,9 @@
         </div>
     </div>
 </template>
+
 <script setup>
-import { ref } from 'vue'
+import {ref } from 'vue'
 
 const choices = ref([
     {
@@ -58,17 +59,10 @@ ul {
     margin-block-end: 0 !important;
     padding-inline-start: 0 !important;
 }
-
-.underline {
-    left: 1.5rem;
-}
-
 .art {
     display: flex;
     flex-direction: column;
-    margin-left: auto;
-    width: calc(100% - 20rem);
-    margin-top: 300px;
+    padding-top: 20rem;
 
     &__heading {
         font-size: 1.75rem;
@@ -131,12 +125,6 @@ ul {
                 margin-bottom: -2.3rem;
             }
         }
-        
     }
 }
-
-.art::-webkit-scrollbar {
-    display: none;
-}
-
 </style>
